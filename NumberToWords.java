@@ -1,3 +1,8 @@
+/* This class helps in converting a number a number into its English word representation.
+   Class Owner: Yash Goyal
+   Date: 17-09-2025
+*/
+
 import java.util.Scanner;
 
 public class NumberToWords {
@@ -60,3 +65,4 @@ public class NumberToWords {
         sc.close();
     }
 }
+
