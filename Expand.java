@@ -14,7 +14,7 @@ public class Expand {
         for (int i = 0; i < input.length(); i++) {
             char ch = input.charAt(i);
 
-            // Ensure next character exists and is a digit
+            
             if (i + 1 < input.length() && Character.isDigit(input.charAt(i + 1))) {
                 int count = Character.getNumericValue(input.charAt(i + 1));
 
@@ -22,9 +22,9 @@ public class Expand {
                     result.append(ch);
                 }
 
-                i++; // Skip the digit since it's already processed
+                i++; 
             } else {
-                // If there's no digit, just append the character once
+               
                 result.append(ch);
             }
         }
@@ -44,3 +44,4 @@ public class Expand {
         sc.close();
     }
 }
+
