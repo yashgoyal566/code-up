@@ -1,4 +1,4 @@
-/* This class helps in converting a number a number into its English word representation.
+/* This class helps in converting a number into its English word representation.
    Class Owner: Yash Goyal
    Date: 17-09-2025
 */
@@ -65,4 +65,5 @@ public class NumberToWords {
         sc.close();
     }
 }
+
 
