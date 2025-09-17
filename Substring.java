@@ -7,30 +7,31 @@ public class Substring{
 	public static void main(String [] args){
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter the string");
-		String s=sc.nextLine(); // Assigning user input to s
+		String s=sc.nextLine(); 
 		sc.close();
-		Substring l=new Substring(); // creating object
-		System.out.println(l.maxLenSubstring(s)); // call the method to find maxLenSubstring
+		Substring l=new Substring(); 
+		System.out.println(l.maxLenSubstring(s));
 		
 	}
-	// Method to find the length of longest substring without repeating characters
+
 	public int maxLenSubstring(String s){
 		int maxlen=0;
 		for(int i=0; i<s.length(); i++){
-			String s1=""; //Temporary substring starting at index
+			String s1=""; 
 			for(int j=i; j<s.length(); j++){
 				char currentchar=s.charAt(j);
 				
-				// Checking the current character that is present in the s1 string or not
+			
 				if(s1.indexOf(currentchar)!=-1){
-					break; // if repeated character found then stop incrementing the s1
+					break; 
 				}
 				else{
-					s1=s1+currentchar; // Append current character to the s1 string
-					maxlen=Math.max(maxlen,s1.length());  // find the maximum length
+					s1=s1+currentchar;
+					maxlen=Math.max(maxlen,s1.length());  
 				}
 			}
 		}
-		return maxlen; // return maximum length
+		return maxlen;
 	}
+
 }
