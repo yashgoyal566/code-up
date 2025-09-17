@@ -1,3 +1,7 @@
+/* This class helps to check whether a given number is prime or not
+   Class Owner: Yash Goyal
+   Date: 17-09-2025
+*/
 import java.util.Scanner;
 
 public class Prime{
