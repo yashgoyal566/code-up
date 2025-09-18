@@ -1,62 +1,67 @@
+/* This class helps in converting a number into its English word representation.
+   Class Owner: Yash Goyal
+   Date: 17-09-2025
+*/
+
 import java.util.Scanner;
 
 public class NumberToWords {
 
-    private static final String[] belowTwenty = {
-        "", "one", "two", "three", "four", "five", "six", "seven",
-        "eight", "nine", "ten", "eleven", "twelve", "thirteen",
-        "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"
-    };
 
-    private static final String[] tens = {
-        "", "", "twenty", "thirty", "forty", "fifty",
-        "sixty", "seventy", "eighty", "ninety"
-    };
-
-    private static final String[] thousands = {
-        "", "thousand", "million", "billion"
-    };
-
-    public static String numberToWords(int num) {
-        if (num == 0) {
-            return "zero";
+    public static int getLength(int n) {
+        int count = 0;
+        while (n > 0) {
+            count++;
+            n = n / 10;
         }
-
-        int i = 0;
-        String words = "";
-
-        while (num > 0) {
-            if (num % 1000 != 0) {
-                words = helper(num % 1000) + thousands[i] + " " + words;
-            }
-            num /= 1000;
-            i++;
-        }
-
-        return words.trim();
+        return count;
     }
 
-    private static String helper(int num) {
-        if (num == 0) {
-            return "";
-        } else if (num < 20) {
-            return belowTwenty[num] + " ";
-        } else if (num < 100) {
-            return tens[num / 10] + " " + helper(num % 10);
+    public static int reverse(int n) {
+        int newNum = 0;
+        while (n > 0) {
+            int dig = n % 10;
+            newNum = newNum * 10 + dig;
+            n = n / 10;
+        }
+        return newNum;
+    }
+    public static void numberToString(int n) {
+        if (n == 0) {
+            System.out.println("zero");
+        } else if (n == 1000) {
+            System.out.println("one-thousand");
         } else {
-            return belowTwenty[num / 100] + " hundred " + helper(num % 100);
+            String[] singleDigit = {"one","two","three","four","five","six","seven","eight","nine"};
+            String[] doubleDigit = {"ten","twenty","thirty","fourty","fifty","sixty","seventy","eighty","ninety"};
+            String[] threeDigit = {"one-hundred","two-hundred","three-hundred","four-hundred","five-hundred","six-hundred","seven-hundred","eight-hundred","nine-hundred"};
+
+            while (n > 0) {
+                int len = getLength(n);
+                int dig = n % 10;
+
+                if (len == 1) {
+                    System.out.print(singleDigit[dig - 1] + " ");
+                } else if (len == 2) {
+                    System.out.print(doubleDigit[dig - 1] + " ");
+                } else {
+                    System.out.print(threeDigit[dig - 1] + " ");
+                }
+
+                n = n / 10;
+            }
+            System.out.println();
         }
     }
+
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter an integer: ");
-        int number = sc.nextInt();
-
-        String result = numberToWords(number);
-        System.out.println("In words: " + result);
-
+        System.out.println("Enter a number:");
+        int n = sc.nextInt();
         sc.close();
+
+        int reversedNumber = reverse(n);
+        numberToString(reversedNumber);
     }
 }
